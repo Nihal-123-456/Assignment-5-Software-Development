@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title%}Review{% endblock %}
+{% block content %}
+    {% load crispy_forms_tags %}
+    <div class="card m-2">
+        <div class="card-body">
+            <form method="post">
+                <h1>Give your review</h1>
+                {% csrf_token %}
+                {{comment_form | crispy}}
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

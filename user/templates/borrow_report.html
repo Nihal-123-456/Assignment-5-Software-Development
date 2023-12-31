@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="mt-5 container">
+    <h2>Borrowing Report</h2>
+        <div class="mt-5">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Borrowed Amount</th>
+                    <th>Borrowing Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for bh in BorrowingReport %}
+                    <tr>
+                      <td>{{ bh.book.title }}</td>
+                      <td>{{ bh.borrowed_amount }} Taka</td>
+                      <td>{{ bh.borrowing_date|date:"F d, Y" }}</td>
+                      <td>
+                          <div class="d-flex">
+                              <a class="btn btn-warning mx-2" href="{% url 'review' bh.book.id %}">Review Book</a>
+                            
+                              <a class="btn btn-info" href="{% url 'return_book' bh.id %}">Return Book</a>
+                            
+                          </div>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+  </div>
+{% endblock %}
