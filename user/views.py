@@ -39,7 +39,7 @@ class UserLoginView(LoginView):
         messages.success(self.request, 'Signin Successful')
         return reverse_lazy('home')
 
-class UserLogoutView(LoginRequiredMixin, LogoutView):
+class UserLogoutView(LogoutView):
     def get_success_url(self):
         return redirect('home')
 
