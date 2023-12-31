@@ -121,3 +121,7 @@ class BorrowReport(LoginRequiredMixin, ListView):
     template_name = 'borrow_report.html'
     model = BorrowingHistory
     context_object_name = 'BorrowingReport'
+    def get_queryset(self):
+        user = self.request.user
+        queryset = BorrowingHistory.objects.filter(user=user)
+        return queryset
