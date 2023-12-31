@@ -24,9 +24,10 @@
                     <p class="text-light">Current balance : {{user.info.balance}}</p>
                     <a class="btn btn-light fw-bold" href="{% url 'profile' %}">Profile</a>
                 
-                
-                    <a class="btn btn-light fw-bold" href="{% url 'logout' %}">Logout</a>
-                
+                  <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <a class="btn btn-light fw-bold" href="">Logout</a>
+                  </form>
               {% else %}
                 
                     <a class="btn btn-light fw-bold" href="{% url 'signup' %}">Signup</a>
