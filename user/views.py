@@ -41,8 +41,6 @@ class UserLoginView(LoginView):
 
 class UserLogoutView(LoginRequiredMixin, LogoutView):
     def get_success_url(self):
-        if self.request.user.is_authenticated:
-            logout(self.request)
         return reverse_lazy('home')
 
 class UserUpdateView(LoginRequiredMixin, View):
