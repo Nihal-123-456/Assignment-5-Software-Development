@@ -41,7 +41,8 @@ class UserLoginView(LoginView):
 
 class UserLogoutView(LogoutView):
     def get_success_url(self):
-        return redirect('home')
+        messages.warning(self.request, 'Logout Successful')
+        return reverse_lazy('home')
 
 class UserUpdateView(LoginRequiredMixin, View):
     template_name = 'signup.html'
